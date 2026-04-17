@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #fff0f5;
+  --surface: #ffffff;
+  --surface-2: #fff5f8;
+  --border: #ffd6e7;
+  --primary: #e91e8c;
+  --primary-light: #ff4db8;
+  --primary-pale: #ffe0f0;
+  --primary-glow: rgba(233, 30, 140, 0.18);
+  --sent-bg: linear-gradient(135deg, #ff4db8, #e91e8c);
+  --received-bg: #ffffff;
+  --text: #2d1b2e;
+  --text-secondary: #6b3a6b;
+  --text-muted: #b07aaa;
+  --error: #e53e3e;
+  --error-bg: #fff5f5;
+  --success: #38a169;
+  --header: #ffffff;
+  --chat-bg: #fff0f5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Mobile responsive ── */
+@media (max-width: 480px) {
+  .auth-input {
+    font-size: 16px !important; /* prevents iOS zoom on focus */
+    padding: 12px 14px !important;
+  }
+  .auth-btn {
+    padding: 13px !important;
+    font-size: 15px !important;
+  }
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ffc0dc; border-radius: 10px; }
+
+.auth-input {
+  width: 100%;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 16px;
+  color: var(--text);
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.auth-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+.auth-input::placeholder { color: var(--text-muted); }
+
+.auth-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #ff4db8, #e91e8c);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 20px var(--primary-glow);
+  letter-spacing: 0.3px;
+}
+.auth-btn:hover { opacity: 0.92; box-shadow: 0 6px 24px var(--primary-glow); }
+.auth-btn:active { transform: scale(0.98); }
+.auth-btn:disabled { opacity: 0.55; cursor: not-allowed; transform: none; }
