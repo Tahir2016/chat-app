@@ -8,7 +8,22 @@ exports.register = async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-      return res.status(400).json({ error: "All fields are requried" });
+      return res.status(400).json({ error: "All fields are required" });
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ error: "Invalid email address" });
+    }
+
+    if (password.length < 6) {
+      return res.status(400).json({ error: "Password must be at least 6 characters" });
+    }
+
+    // check if email already exists
+    const existing = await pool.query("SELECT id FROM users WHERE email=$1", [email]);
+    if (existing.rows.length > 0) {
+      return res.status(400).json({ error: "Email already registered" });
     }
 
     const hashed = await bcrypt.hash(password, 10);
