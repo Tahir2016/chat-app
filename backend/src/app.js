@@ -7,8 +7,13 @@ const messageRoutes = require("./routes/messageRoutes");
 const app = express();
 
 app.use(cors({
-    origin : process.env.CLIENT_URL,
-    credentials : true
+    origin: [
+        process.env.CLIENT_URL,
+        "https://chat-app-gules-nine-17.vercel.app",
+        "https://chat-knprf4och-tahir2016s-projects.vercel.app",
+        "http://localhost:3000"
+    ],
+    credentials: true
 }));
 
 app.use(express.json())
