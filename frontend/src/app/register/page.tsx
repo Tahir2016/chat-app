@@ -24,7 +24,7 @@ export default function RegisterPage() {
     setLoading(true);
     setError("");
     try {
-      await register(form.name, form.email, form.password);
+      const data = await register(form.name, form.email, form.password);
       setCountdown(3);
       let secs = 3;
       const interval = setInterval(() => {
@@ -117,7 +117,7 @@ export default function RegisterPage() {
             {countdown !== null && (
               <div style={{ display: "flex", alignItems: "center", gap: "10px", background: "#f0fff4", border: "1px solid #9ae6b4", borderRadius: "10px", padding: "10px 14px", color: "#276749", fontSize: "13px", fontWeight: 600 }}>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><polyline points="20 6 9 17 4 12" /></svg>
-                Account created! Redirecting in {countdown}s...
+                Account created! Redirecting to login... ✅
               </div>
             )}
 

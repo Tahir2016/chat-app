@@ -28,12 +28,12 @@ exports.register = async (req, res) => {
 
     const hashed = await bcrypt.hash(password, 10);
 
-    const result = await pool.query(
-      "INSERT INTO users (name, email, password) VALUES ($1, $2, $3) RETURNING id, name, email",
+    await pool.query(
+      "INSERT INTO users (name, email, password, is_verified) VALUES ($1, $2, $3, true) RETURNING id, name, email",
       [name, email, hashed],
     );
 
-    res.json(result.rows[0]);
+    res.json({ message: "Registration successful! You can now login." });
     
   } catch (error) {
     console.error("🔥 REGISTER ERROR FULL:", error);
@@ -120,7 +120,7 @@ exports.forgotPassword = async (req, res) =>{
     }
 };
 
-exports.resetPassword = async (req, res)=>{
+exports.resetPassword = async (req, res) => {
     try{
         const {token, resetPassword} = req.body;
 
