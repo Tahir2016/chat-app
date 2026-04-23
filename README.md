@@ -1,4 +1,5 @@
 💬 Chat App (Real-Time Messaging Platform)
+
 A full-stack real-time chat application built with modern technologies, featuring authentication, real-time messaging, and scalable architecture.
 
 ---
